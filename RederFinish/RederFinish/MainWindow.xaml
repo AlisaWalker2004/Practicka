@@ -1,0 +1,39 @@
+﻿<Window x:Class="RederFinish.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RederFinish"
+        mc:Ignorable="d"
+        Title="Чтение xml" Height="700" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="4" FontFamily="Century Gothic" FontSize="20" FontWeight="Bold" Text="Страхователь" HorizontalAlignment="Center"/>
+            <TextBlock Text="Регистрационный номер" Grid.Row="1" FontFamily="Candara Light" FontSize="18"/>
+            <TextBlock Text="tbregNom" Name="tbregNom" Grid.Row="1" Grid.Column="1" FontFamily="Candara Light" FontSize="18"/>
+            <TextBlock Text="Наименование" Grid.Row="2" Grid.Column="0" FontFamily="Candara Light" FontSize="18"/>
+            <TextBlock Text="tbNameOrg" Name="tbNameOrg" Grid.Row="2" Grid.Column="1" FontFamily="Candara Light" FontSize="18"/>
+            <TextBlock Text="Инн" Grid.Row="3" Grid.Column="0" FontFamily="Candara Light" FontSize="18"/>
+        </Grid>
+        <Label Content="{Binding Policyholder.RegistrationNumber}"/>
+    </Grid>
+</Window>
