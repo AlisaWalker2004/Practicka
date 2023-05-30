@@ -1,0 +1,113 @@
+﻿<Window x:Class="RederFinish.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RederFinish"
+        mc:Ignorable="d"
+        Title="Чтение xml" Height="800" Width="1000" Icon="/Resources/отчёт.ico" Background="#FFFFFBA2">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0,5*"/>
+            <RowDefinition Height="0,1*"/>
+            <RowDefinition Height="0,5*"/>
+            <RowDefinition Height="0,5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0,1*"/>
+                <RowDefinition Height="0,2*"/>
+                <RowDefinition Height="0,2*"/>
+                <RowDefinition Height="0,1*"/>
+                <RowDefinition Height="0,1*"/>
+                <RowDefinition Height="0,1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="4" FontFamily="Century Gothic" FontSize="25" FontWeight="Bold" Text="Страхователь" HorizontalAlignment="Center"/>
+            <TextBlock Text="Регистрационный номер" Grid.Row="1" FontFamily="Candara Light" FontSize="25" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Policyholder.RegistrationNumber}" Name="tbregNom" Grid.Row="1" TextWrapping="Wrap" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Наименование" Grid.Row="2" Grid.Column="0" FontFamily="Candara Light" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Policyholder.Name}" Name="tbNameOrg" Grid.Row="2" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Инн" Grid.Row="3" Grid.Column="0" FontFamily="Candara Light" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock Text="{Binding Policyholder.TIN}" Name="tbInn" Grid.Row="3" TextWrapping="Wrap" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="КПП" Grid.Row="4" Grid.Column="0" FontFamily="Candara Light" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock Text="{Binding Policyholder.Checkpoint}" Name="tbKpp" Grid.Row="4" TextWrapping="Wrap" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Код по ОКВЕД" Grid.Row="5" Grid.Column="0" FontFamily="Candara Light" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock Text="{Binding Policyholder.Code}" Name="tbCode" Grid.Row="5" TextWrapping="Wrap" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="ОГРН" Grid.Row="1" Grid.Column="2" FontFamily="Candara Light" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock Text="{Binding Policyholder.OGRN}" Name="tbOGRN" TextWrapping="Wrap" Grid.Row="1" Grid.Column="3" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Телефон" Grid.Row="2" Grid.Column="2" FontFamily="Candara Light"  FontSize="25"/>
+            <TextBlock Text="{Binding Policyholder.Phone}" Name="tbPhone" TextWrapping="Wrap" Grid.Row="2" Grid.Column="3" FontFamily="Times New Roman" FontSize="18"/>
+            <Button Content="Выбрать файл" FontFamily="Century Gothic" Grid.RowSpan="2" FontSize="30" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Click="btnVibor_Click"/>
+        </Grid>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="4" FontFamily="Century Gothic" FontSize="25" TextWrapping="Wrap" FontWeight="Bold" Text="Зарегистрированное лицо" HorizontalAlignment="Center"/>
+        <DataGrid x:Name="dg" ItemsSource="{Binding ZLs}" Grid.Row="2" AutoGenerateColumns="False" Background="#FFFFFBA2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="СНИЛС" Binding="{Binding Insurance}"/>
+                <DataGridTextColumn Header="ИНН" Binding="{Binding INN}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Fullname.SecondName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Fullname.FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Fullname.Patronimyc}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}"/>
+                <DataGridTextColumn Header="Статус ЗЛ" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Гражданство" Binding="{Binding Citizenship}"/>
+                <DataGridTextColumn Header="Статус заявления" Binding="{Binding SZVTD.Statements.continueStatement.Status}"/>
+                <DataGridTextColumn Header="Дата заявления" Binding="{Binding SZVTD.Statements.continueStatement.Date}"/>
+                <DataGridTextColumn Header="UUID" Binding="{Binding SZVTD.TD.Event.UUID}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding SZVTD.TD.Event.Date}"/>
+                <DataGridTextColumn Header="Вид" Binding="{Binding SZVTD.TD.Event.Type}"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding SZVTD.TD.Event.Post}"/>
+                <DataGridTextColumn Header="Является совместителем" Binding="{Binding SZVTD.TD.Event.IsCooperator}"/>
+                <DataGridTextColumn Header="Структурное подразделение" Binding="{Binding SZVTD.TD.Event.Subdivision}"/>
+                <DataGridTextColumn Header="Код ВФ по ОКЗ" Binding="{Binding SZVTD.TD.Event.Code}"/>
+                <DataGridTextColumn Header="Наименование основания" Binding="{Binding SZVTD.TD.Event.Reason.Name}"/>
+                <DataGridTextColumn Header="Дата основания" Binding="{Binding SZVTD.TD.Event.Reason.Date}"/>
+                <DataGridTextColumn Header="Номер основания" Binding="{Binding SZVTD.TD.Event.Reason.Number}"/>
+                <DataGridTextColumn Header="Код причины увольнения" Binding="{Binding SZVTD.TD.Event.Dismissal.CodePrich}"/>
+                <DataGridTextColumn Header="Нормативный документ" Binding="{Binding SZVTD.TD.Event.Dismissal.NormDoc}"/>
+                <DataGridTextColumn Header="Статья" Binding="{Binding SZVTD.TD.Event.Dismissal.State}"/>
+                <DataGridTextColumn Header="Часть" Binding="{Binding SZVTD.TD.Event.Dismissal.Chapter}"/>
+                <DataGridTextColumn Header="Пункт" Binding="{Binding SZVTD.TD.Event.Dismissal.Punkt}"/>
+                <DataGridTextColumn Header="Причина" Binding="{Binding SZVTD.TD.Event.PrichinaYvol}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="4" FontFamily="Century Gothic" FontSize="25" TextWrapping="Wrap" FontWeight="Bold" Text="Руководитель и служебная информация" HorizontalAlignment="Center"/>
+            <TextBlock Text="Фамилия" Grid.Row="1" FontFamily="Candara Light" FontSize="25" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Manager.FullName.SecondName}" Name="tbSurname" Grid.Row="1" TextWrapping="Wrap" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Имя" Grid.Row="2" Grid.Column="0" FontFamily="Candara Light" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Manager.FullName.FirstName}"  Name="tbName" Grid.Row="2" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Отчетство" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" FontFamily="Candara Light" FontSize="25"/>
+            <TextBlock Text="{Binding Manager.FullName.Patronimyc}" TextWrapping="Wrap" Name="tbPatronymic" Grid.Row="3" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Должность" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" FontFamily="Candara Light" FontSize="25"/>
+            <TextBlock Text="{Binding Manager.Post}" Name="tbDolj" Grid.Row="4" TextWrapping="Wrap" Grid.Column="1" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Дата заполнения" Grid.Row="5" Grid.Column="2" TextWrapping="Wrap" FontFamily="Candara Light" FontSize="25"/>
+            <TextBlock Text="{Binding EFC.FillDate}" Name="tbDate" Grid.Row="5" TextWrapping="Wrap" Grid.Column="3" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="GUID" Grid.Row="1" Grid.Column="2" FontFamily="Candara Light" TextWrapping="Wrap" FontSize="25"/>
+            <TextBlock Text="{Binding ServiceInformation.GUID}" Name="tbGuid" TextWrapping="Wrap" Grid.Row="1" Grid.Column="3" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Дата и время" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" FontFamily="Candara Light" FontSize="25"/>
+            <TextBlock Text="{Binding ServiceInformation.DateTime}" TextWrapping="Wrap" Name="tbDateTime" Grid.Row="2" Grid.Column="3" FontFamily="Times New Roman" FontSize="18"/>
+            <TextBlock Text="Программа подготовки" Grid.Row="3" TextWrapping="Wrap" Grid.Column="2" FontFamily="Candara Light" FontSize="25"/>
+            <TextBlock Text="{Binding ServiceInformation.TrainingProgram}" TextWrapping="Wrap" Name="tbProg" Grid.Row="3" Grid.Column="3" FontFamily="Times New Roman" FontSize="18"/>
+        </Grid>
+    </Grid>
+</Window>
