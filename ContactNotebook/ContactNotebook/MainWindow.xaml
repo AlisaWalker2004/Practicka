@@ -1,0 +1,45 @@
+﻿<Window x:Class="ContactNotebook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactNotebook"
+        mc:Ignorable="d"
+        Title="Контакты" Height="450" Width="800" Icon="/Resources/второй.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="1" SelectionChanged="lbReadText_SelectionChanged" x:Name="lbReadText" Visibility="Visible"/>
+        <StackPanel Grid.Row="1" Name="spAuto" Visibility="Hidden">
+            <TextBlock Text="Введите пароль:" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22"/>
+            <TextBlock/>
+            <TextBox x:Name="tbPassword" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22" Width="220" HorizontalAlignment="Left"/>
+            <TextBlock/>
+            <Button Content="Войти" Background="#FF7CFF6A" Click="BtnVhod_Click" FontFamily="Century Gothic" FontSize="20" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <Grid Grid.Row="2" Name="GridVis" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Введите кабинет:" Name="kab" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22" HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="1" Name="tbKab" VerticalAlignment="Top"  FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22"/>
+            <TextBlock Text="Введите ФИО или должность:" Name="Fio" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22" Grid.Column="2" HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="3" Name="tbFio" VerticalAlignment="Top" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22"/>
+            <TextBlock Text="Введите телефон:" Name="NumberPhone" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22" Grid.Column="4" HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="5" Name="tbNumberPhone" VerticalAlignment="Top" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22"/>
+        </Grid>
+        <Button Content="Авторизоваться"  Click="BtnEnter_Click" Name="BtnEnter" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Center" Height="49" Margin="585,0,0,0"/>
+        <Button Content="Сохранить" Visibility="Hidden" Click="BtnSave_Click" Name="BtnSave" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" VerticalAlignment="Center" Height="49" HorizontalAlignment="Left"/>
+        <Button Content="Вернуться"  Click="BtnBack_Click" Visibility="Hidden" Name="BtnBack" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" VerticalAlignment="Center" Height="49" HorizontalAlignment="Right" />
+        <Button Content="Удалить"  Click="BtnDelete_Click" Visibility="Hidden" Name="BtnDelete" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" VerticalAlignment="Center" Height="49" HorizontalAlignment="Right" />
+        
+    </Grid>
+</Window>
