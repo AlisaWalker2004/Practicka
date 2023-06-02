@@ -5,14 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactNotebook"
         mc:Ignorable="d"
-        Title="Контакты" Height="450" Width="800" Icon="/Resources/второй.ico">
+        Title="Контакты" Height="500" Width="800" Icon="/Resources/второй.ico">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="40*"/>
         </Grid.RowDefinitions>
-        <ListBox Grid.Row="1" SelectionChanged="lbReadText_SelectionChanged" ItemsSource="{Binding fileRead, Mode =TwoWay, UpdateSourceTrigger = PropertyChanged}" x:Name="lbReadText" Visibility="Visible"/>
+        <Grid Grid.Row="1">
+            <Border BorderBrush="#FF7CFF6A"/>
+        </Grid>
+        <ListBox Grid.Row="1" FontFamily="Century Gothic" FontSize="22" SelectionChanged="lbReadText_SelectionChanged" ItemsSource="{Binding fileRead, Mode =TwoWay, UpdateSourceTrigger =PropertyChanged}" x:Name="lbReadText" Visibility="Visible"/>
         <StackPanel Grid.Row="0" Name="spAuto" Visibility="Hidden">
             <TextBlock Text="Введите пароль:" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22"/>
             <TextBlock/>
@@ -40,12 +43,11 @@
             <TextBlock Text="Введите телефон:" Name="NumberPhone" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22" Grid.Column="4" HorizontalAlignment="Right"/>
             <TextBox Grid.Column="5" Name="tbNumberPhone" VerticalAlignment="Top" FontFamily="Century Gothic" TextWrapping="Wrap" FontSize="22"/>
             <Button Content="Сохранить" Click="BtnSave_Click" Grid.ColumnSpan="2" Grid.Row="1" Name="BtnSave" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" Height="49" HorizontalAlignment="Left"/>
+            <Button Content="Очистить поля" Click="BtnClear_Click" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="3" Name="BtnClear" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" Height="49" HorizontalAlignment="Left"/>
         </Grid>
         <Button Content="Редактировать" Visibility="Hidden" Click="BtnEdit_Click" HorizontalAlignment="Left"  Name="BtnEdit" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" Height="49"/>
-       
         <Button Content="Вернуться"  Click="BtnBack_Click" Visibility="Hidden" Name="BtnBack" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" Height="49" HorizontalAlignment="Right"/>
         <Button Content="Удалить"  Click="BtnDelete_Click" Visibility="Hidden" Name="BtnDelete" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" Height="49" HorizontalAlignment="Center"/>
-       
         <Button Content="Авторизоваться"  Click="BtnEnter_Click" Visibility="Visible" Name="BtnEnter" Background="#FF7CFF6A" FontFamily="Century Gothic" Width="215" FontSize="22" Height="49" HorizontalAlignment="Right"/>
     </Grid>
 </Window>
